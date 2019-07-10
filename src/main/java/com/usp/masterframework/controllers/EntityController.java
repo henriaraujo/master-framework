@@ -18,53 +18,58 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.usp.masterframework.documents.Agent;
+import com.usp.masterframework.documents.Entity;
 import com.usp.masterframework.responses.Response;
-import com.usp.masterframework.services.AgentService;
+import com.usp.masterframework.services.EntityService;
+
 
 @RestController
-@RequestMapping(path = "/masterframework/agents")
-public class AgentController {
+@RequestMapping(path = "/masterframework/entities")
+public class EntityController {
 
 	@Autowired
-	private AgentService agentService;
+	private EntityService entityService;
+	
+	//@Autowired
+	//private AgentService agentService;
 	
 	@GetMapping
-	public ResponseEntity<Response<List<Agent>>> listAll(){
-		return ResponseEntity.ok(new Response<List<Agent>>(this.agentService.listAll()));
+	public ResponseEntity<Response<List<Entity>>> listAll(){
+		return ResponseEntity.ok(new Response<List<Entity>>(this.entityService.listAll()));
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Optional<Agent>>> listById(@PathVariable (name = "id") String id){
-		return ResponseEntity.ok(new Response<Optional<Agent>>(this.agentService.listById(id)));
+	public ResponseEntity<Response<Optional<Entity>>> listById(@PathVariable (name = "id") String id){
+		return ResponseEntity.ok(new Response<Optional<Entity>>(this.entityService.listById(id)));
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Response <Agent>> register (@Valid @RequestBody Agent agent, BindingResult result){
+	public ResponseEntity<Response <Entity>> register (@Valid @RequestBody Entity entity, BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();
 			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Agent>(errors));
+			return ResponseEntity.badRequest().body(new Response<Entity>(errors));
 		}
-		return ResponseEntity.ok(new Response<Agent>(this.agentService.register(agent)));
+		return ResponseEntity.ok(new Response<Entity>(this.entityService.register(entity)));
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Agent>> update (@PathVariable (name = "id") String id, @Valid @RequestBody Agent agent,
+	public ResponseEntity<Response<Entity>> update (@PathVariable (name = "id") String id, @Valid @RequestBody Entity entity,
 			BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();
 			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Agent>(errors));
+			return ResponseEntity.badRequest().body(new Response<Entity>(errors));
 		}
-		agent.setId(id);
-		return ResponseEntity.ok(new Response<Agent>(this.agentService.update(agent)));
+		entity.setId(id);
+		return ResponseEntity.ok(new Response<Entity>(this.entityService.update(entity)));
 	}
 	
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Response<Integer>> remove (@PathVariable(name = "id") String id){
-	  this.agentService.remove(id);
+	  this.entityService.remove(id);
 	  return ResponseEntity.ok(new Response<Integer>(1));
 	}
+	
 	
 }
