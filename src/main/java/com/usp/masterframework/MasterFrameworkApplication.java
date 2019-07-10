@@ -11,6 +11,7 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
+import com.usp.masterframework.documents.Entity;
 
 
 @SpringBootApplication
@@ -22,6 +23,10 @@ public class MasterFrameworkApplication {
 		
 		//System.out.println(gson.toJson(results[0].addressComponents));
 	public static void main(String[] args) throws ApiException, InterruptedException, IOException {
+		
+		Entity entity = new Entity();
+		
+		entity.getAgents();
 		
 		/*System.out.println("BoBo");
 		

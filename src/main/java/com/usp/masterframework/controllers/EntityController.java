@@ -30,8 +30,6 @@ public class EntityController {
 	@Autowired
 	private EntityService entityService;
 	
-	//@Autowired
-	//private AgentService agentService;
 	
 	@GetMapping
 	public ResponseEntity<Response<List<Entity>>> listAll(){

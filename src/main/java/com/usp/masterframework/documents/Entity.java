@@ -1,15 +1,14 @@
 package com.usp.masterframework.documents;
 
 import java.util.List;
-
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Id;
 
 public class Entity {
 
+
 	private List<Agent> agents;
-	
 	
 	@Id
 	private String id;
@@ -35,10 +34,6 @@ public class Entity {
 
 	public List<Agent> getAgents() {
 		return agents;
-	}
-
-	public void setAgents(List<Agent> agents) {
-		this.agents = agents;
 	}
 
 }

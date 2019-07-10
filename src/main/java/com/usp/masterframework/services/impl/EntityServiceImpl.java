@@ -6,12 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.usp.masterframework.documents.Agent;
 import com.usp.masterframework.documents.Entity;
 import com.usp.masterframework.repositories.EntityRepository;
 import com.usp.masterframework.services.EntityService;
 
 @Service
 public class EntityServiceImpl implements EntityService{
+
+	
 
 	@Autowired
 	private EntityRepository entityRepository;
@@ -42,6 +45,9 @@ public class EntityServiceImpl implements EntityService{
 		this.entityRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Agent> listAllEntityAgents(String id) {
+		return this.entityRepository.findById(id).get().getAgents();
+	}
 	
-
 }

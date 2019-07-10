@@ -3,6 +3,7 @@ package com.usp.masterframework.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.usp.masterframework.documents.Agent;
 import com.usp.masterframework.documents.Entity;
 
 public interface EntityService {
@@ -15,7 +16,8 @@ public interface EntityService {
 	 
 	 Entity update(Entity entity);
 	 
-	 void remove(String Id);
+	 void remove(String id);
 	 
-
+	 
+	 List<Agent> listAllEntityAgents(String id);
 }
