@@ -1,5 +1,6 @@
 package com.usp.masterframework.documents;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -7,9 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
-
-@javax.persistence.Entity
-@Table(name = "agent_table")
+@Entity
+@Table(name = "agent")
 public class Agent extends Person{
 
 	@Id
@@ -17,8 +17,8 @@ public class Agent extends Person{
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name = "entity_id_table")
-	private Entity entity;
+	@JoinColumn(name = "institution_id")
+	private Institution institution;
 
 	
 	public Agent() {
@@ -26,13 +26,13 @@ public class Agent extends Person{
 		
 	}
 	
-	public Entity getEntity() {
-		return entity;
+	public Institution getInstitution() {
+		return institution;
 	}
 
 
-	public void setEntity(Entity entity) {
-		this.entity = entity;
+	public void setInstitution(Institution institution) {
+		this.institution = institution;
 	}
 
 	

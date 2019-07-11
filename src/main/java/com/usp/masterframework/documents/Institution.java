@@ -13,21 +13,21 @@ import javax.persistence.Id;
 
 
 @javax.persistence.Entity
-@Table(name = "entity_table")
-public class Entity {
+@Table(name = "institution")
+public class Institution {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToMany(mappedBy = "entity", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
 	private List<Agent> agents;
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
 	
 	
-	public Entity() {
+	public Institution() {
 		
 	}
 	
