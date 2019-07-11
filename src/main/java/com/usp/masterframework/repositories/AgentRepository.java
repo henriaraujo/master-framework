@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.usp.masterframework.documents.Agent;
 
-public interface AgentRepository extends JpaRepository<Agent, String> {
+public interface AgentRepository extends JpaRepository<Agent, Integer> {
 
 }

@@ -23,7 +23,7 @@ public class AgentServiceImpl implements AgentService {
 	}
 
 	@Override
-	public Optional <Agent> listById(String id) {
+	public Optional <Agent> listById(Integer id) {
 		return this.agentRepository.findById(id);
 	}
 
@@ -38,7 +38,7 @@ public class AgentServiceImpl implements AgentService {
 	}
 
 	@Override
-	public void remove(String id) {
+	public void remove(Integer id) {
 		this.agentRepository.deleteById(id);
 	}
 

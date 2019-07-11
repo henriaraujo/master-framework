@@ -24,7 +24,7 @@ import com.usp.masterframework.services.InstitutionService;
 
 
 @RestController
-@RequestMapping(path = "/masterframework/entities")
+@RequestMapping(path = "/masterframework/institutions")
 public class InstitutionController {
 
 	@Autowired
@@ -37,7 +37,7 @@ public class InstitutionController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Optional<Institution>>> listById(@PathVariable (name = "id") String id){
+	public ResponseEntity<Response<Optional<Institution>>> listById(@PathVariable (name = "id") Integer id){
 		return ResponseEntity.ok(new Response<Optional<Institution>>(this.institutionService.listById(id)));
 	}
 
@@ -52,7 +52,7 @@ public class InstitutionController {
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Institution>> update (@PathVariable (name = "id") int id, @Valid @RequestBody Institution institution,
+	public ResponseEntity<Response<Institution>> update (@PathVariable (name = "id") Integer id, @Valid @RequestBody Institution institution,
 			BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();
@@ -64,7 +64,7 @@ public class InstitutionController {
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Response<Integer>> remove (@PathVariable(name = "id") String id){
+	public ResponseEntity<Response<Integer>> remove (@PathVariable(name = "id") Integer id){
 	  this.institutionService.remove(id);
 	  return ResponseEntity.ok(new Response<Integer>(1));
 	}

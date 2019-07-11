@@ -10,14 +10,13 @@ public interface InstitutionService {
 	
 	 List<Institution> listAll();
 	 
-	 Optional <Institution> listById(String id);
+	 Optional <Institution> listById(Integer id);
 	 
 	 Institution register (Institution institution);
 	 
 	 Institution update(Institution institution);
 	 
-	 void remove(String id);
+	 void remove(Integer id);
 	 
-	 
-	 List<Agent> listAllInstitutionAgents(String id);
+	 List<Agent> listAllInstitutionAgents(Integer id);
 }

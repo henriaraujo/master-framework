@@ -26,7 +26,7 @@ public class InstitutionServiceImpl implements InstitutionService{
 	}
 
 	@Override
-	public Optional <Institution> listById(String id) {
+	public Optional <Institution> listById(Integer id) {
 		return this.institutionRepository.findById(id);
 	}
 
@@ -41,12 +41,12 @@ public class InstitutionServiceImpl implements InstitutionService{
 	}
 
 	@Override
-	public void remove(String id) {
+	public void remove(Integer id) {
 		this.institutionRepository.deleteById(id);
 	}
 
 	@Override
-	public List<Agent> listAllInstitutionAgents(String id) {
+	public List<Agent> listAllInstitutionAgents(Integer id) {
 		return this.institutionRepository.findById(id).get().getAgents();
 	}
 	

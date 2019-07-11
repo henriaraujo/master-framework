@@ -18,7 +18,7 @@ public class Institution {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
 	private List<Agent> agents;
@@ -31,11 +31,11 @@ public class Institution {
 		
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

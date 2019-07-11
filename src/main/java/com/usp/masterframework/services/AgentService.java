@@ -9,12 +9,12 @@ public interface AgentService {
 	
  List<Agent> listAll();
  
- Optional <Agent> listById(String id);
+ Optional <Agent> listById(Integer id);
  
  Agent register (Agent agent);
  
  Agent update(Agent agent);
  
- void remove(String Id);
+ void remove(Integer Id);
  
 }

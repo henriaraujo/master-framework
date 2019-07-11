@@ -35,7 +35,7 @@ public class AgentController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Optional<Agent>>> listById(@PathVariable (name = "id") String id){
+	public ResponseEntity<Response<Optional<Agent>>> listById(@PathVariable (name = "id") Integer id){
 		return ResponseEntity.ok(new Response<Optional<Agent>>(this.agentService.listById(id)));
 	}
 	
@@ -50,7 +50,7 @@ public class AgentController {
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Agent>> update (@PathVariable (name = "id") int id, @Valid @RequestBody Agent agent,
+	public ResponseEntity<Response<Agent>> update (@PathVariable (name = "id") Integer id, @Valid @RequestBody Agent agent,
 			BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();
@@ -62,7 +62,7 @@ public class AgentController {
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Response<Integer>> remove (@PathVariable(name = "id") String id){
+	public ResponseEntity<Response<Integer>> remove (@PathVariable(name = "id") Integer id){
 	  this.agentService.remove(id);
 	  return ResponseEntity.ok(new Response<Integer>(1));
 	}
