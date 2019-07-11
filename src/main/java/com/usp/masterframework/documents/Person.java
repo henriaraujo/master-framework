@@ -1,14 +1,12 @@
 package com.usp.masterframework.documents;
 
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.data.annotation.Id;
 
 public abstract class Person {
 
-	@Id
-	private String id;
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
@@ -19,16 +17,8 @@ public abstract class Person {
 	private String email;
 	
 	public Person() {
-		
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

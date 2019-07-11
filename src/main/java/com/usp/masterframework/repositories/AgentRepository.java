@@ -1,9 +1,9 @@
 package com.usp.masterframework.repositories;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.usp.masterframework.documents.Agent;
 
-public interface AgentRepository extends MongoRepository<Agent, String> {
+public interface AgentRepository extends JpaRepository<Agent, String> {
 
 }

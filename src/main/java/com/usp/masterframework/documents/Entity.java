@@ -1,26 +1,41 @@
 package com.usp.masterframework.documents;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
+
+@javax.persistence.Entity
+@Table(name = "entity_table")
 public class Entity {
 
-
-	private List<Agent> agents;
-	
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@OneToMany(mappedBy = "entity", cascade = CascadeType.ALL)
+	private List<Agent> agents;
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
 	
-	public String getId() {
+	
+	public Entity() {
+		
+	}
+	
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

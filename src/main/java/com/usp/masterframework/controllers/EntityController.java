@@ -52,7 +52,7 @@ public class EntityController {
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Entity>> update (@PathVariable (name = "id") String id, @Valid @RequestBody Entity entity,
+	public ResponseEntity<Response<Entity>> update (@PathVariable (name = "id") int id, @Valid @RequestBody Entity entity,
 			BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();

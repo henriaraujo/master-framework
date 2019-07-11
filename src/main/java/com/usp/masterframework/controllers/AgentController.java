@@ -50,7 +50,7 @@ public class AgentController {
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Agent>> update (@PathVariable (name = "id") String id, @Valid @RequestBody Agent agent,
+	public ResponseEntity<Response<Agent>> update (@PathVariable (name = "id") int id, @Valid @RequestBody Agent agent,
 			BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();

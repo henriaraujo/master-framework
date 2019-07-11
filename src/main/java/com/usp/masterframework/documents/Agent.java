@@ -1,27 +1,47 @@
 package com.usp.masterframework.documents;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Id;
+
+
+@javax.persistence.Entity
+@Table(name = "agent_table")
 public class Agent extends Person{
 
-	private String entityId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name = "entity_id_table")
+	private Entity entity;
 
+	
 	public Agent() {
 		super();
 		
 	}
 	
-	public Agent(String entityId) {
-		super();
-		this.entityId = entityId;
+	public Entity getEntity() {
+		return entity;
 	}
 
-	@Override
-	public String getId() {
-		return super.getId();
+
+	public void setEntity(Entity entity) {
+		this.entity = entity;
 	}
 
-	@Override
-	public void setId(String id) {
-		super.setId(id);
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override
@@ -45,13 +65,5 @@ public class Agent extends Person{
 		super.setEmail(email);
 	}
 
-	public String getEntityId() {
-		return entityId;
-	}
-
-	public void setEntityId(String entityId) {
-		this.entityId = entityId;
-	}
-	
 	
 }
