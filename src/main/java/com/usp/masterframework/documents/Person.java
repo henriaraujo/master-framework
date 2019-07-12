@@ -1,13 +1,11 @@
 package com.usp.masterframework.documents;
-
-
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-
+@MappedSuperclass
 public abstract class Person {
 
-	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
 	

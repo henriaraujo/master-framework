@@ -19,6 +19,8 @@ public class Agent extends Person{
 	@ManyToOne
 	@JoinColumn(name = "institution_id")
 	private Institution institution;
+	
+	private Integer numbeDoido;
 
 	
 	public Agent() {
@@ -63,6 +65,14 @@ public class Agent extends Person{
 	@Override
 	public void setEmail(String email) {
 		super.setEmail(email);
+	}
+
+	public Integer getNumbeDoido() {
+		return numbeDoido;
+	}
+
+	public void setNumbeDoido(Integer numbeDoido) {
+		this.numbeDoido = numbeDoido;
 	}
 
 	
