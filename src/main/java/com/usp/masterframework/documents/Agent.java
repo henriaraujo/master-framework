@@ -28,6 +28,14 @@ public class Agent extends Person {
 		super();
 	}
 	
+	
+	public Agent(Integer id, @NotNull Institution institution) {
+		super();
+		this.id = id;
+		this.institution = institution;
+	}
+
+
 	public Institution getInstitution() {
 		return institution;
 	}
