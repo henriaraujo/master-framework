@@ -1,30 +1,22 @@
 package com.usp.masterframework.documents;
-
 import java.util.Set;
 
-import javax.persistence.FetchType;
+import javax.persistence.ElementCollection;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.Id;
-
-
 @javax.persistence.Entity
 @Table(name = "institution")
-@JsonIgnoreProperties
 public class Institution {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
@@ -32,10 +24,10 @@ public class Institution {
 	
 	@OneToMany(mappedBy = "institution") 
 	@JsonManagedReference
+	@ElementCollection
 	private Set<Agent> agents;
 	
 	public Institution() {
-		
 	}
 	
 	public Integer getId() {

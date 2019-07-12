@@ -9,7 +9,6 @@ public abstract class Person {
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
 	
-	
 	@NotEmpty(message = "Email can not be empty")
 	@Email (message = "Invalid Email")
 	private String email;

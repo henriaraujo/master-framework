@@ -14,9 +14,7 @@ import com.usp.masterframework.services.InstitutionService;
 
 @Service
 public class InstitutionServiceImpl implements InstitutionService{
-
 	
-
 	@Autowired
 	private InstitutionRepository institutionRepository;
 	
@@ -46,9 +44,9 @@ public class InstitutionServiceImpl implements InstitutionService{
 		this.institutionRepository.deleteById(id);
 	}
 
-	@Override
-	public Set<Agent> listAllInstitutionAgents(Integer id) {
-		return this.institutionRepository.findById(id).get().getAgents();
+    @Override
+	public  Set<Agent> listAllInstitutionAgents(Integer id) {
+    		return this.institutionRepository.findById(id).get().getAgents();
 	}
-	
+    
 }

@@ -3,6 +3,7 @@ package com.usp.masterframework.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.usp.masterframework.documents.Agent;
 import com.usp.masterframework.documents.Institution;
 import com.usp.masterframework.responses.Response;
 import com.usp.masterframework.services.InstitutionService;
@@ -68,6 +70,13 @@ public class InstitutionController {
 	  this.institutionService.remove(id);
 	  return ResponseEntity.ok(new Response<Integer>(1));
 	}
+	
+	@GetMapping(path = "/{id}/agents")
+	public ResponseEntity<Response<Set<Agent>>> listAllInstitutionAgents(@PathVariable (name = "id") Integer id){
+		return ResponseEntity.ok(new Response<Set<Agent>>(this.institutionService.listAllInstitutionAgents(id)));
+	}
+	
+
 	
 	
 }

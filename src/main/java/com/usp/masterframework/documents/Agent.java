@@ -1,20 +1,17 @@
 package com.usp.masterframework.documents;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.Id;
 
 @Entity
 @Table(name = "agent")
-@JsonIgnoreProperties
 public class Agent extends Person {
 
 	@Id
@@ -23,13 +20,12 @@ public class Agent extends Person {
 	
 	@ManyToOne
 	@JoinColumn(name = "institution_id")
+	@NotNull
 	@JsonBackReference
 	private Institution institution;
 	
-	
 	public Agent() {
 		super();
-		//institution.setId(id);
 	}
 	
 	public Institution getInstitution() {
