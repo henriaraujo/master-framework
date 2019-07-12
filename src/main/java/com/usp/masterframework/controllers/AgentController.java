@@ -29,6 +29,9 @@ public class AgentController {
 	@Autowired
 	private AgentService agentService;
 	
+	//@Autowired
+	//private InstitutionService institutionService;
+	
 	@GetMapping
 	public ResponseEntity<Response<List<Agent>>> listAll(){
 		return ResponseEntity.ok(new Response<List<Agent>>(this.agentService.listAll()));

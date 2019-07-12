@@ -2,6 +2,7 @@ package com.usp.masterframework.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,7 @@ public class InstitutionServiceImpl implements InstitutionService{
 	}
 
 	@Override
-	public List<Agent> listAllInstitutionAgents(Integer id) {
+	public Set<Agent> listAllInstitutionAgents(Integer id) {
 		return this.institutionRepository.findById(id).get().getAgents();
 	}
 	

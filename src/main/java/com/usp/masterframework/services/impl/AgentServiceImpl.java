@@ -16,7 +16,7 @@ public class AgentServiceImpl implements AgentService {
 	@Autowired
 	private AgentRepository agentRepository;
 	
-	
+
 	@Override
 	public List<Agent> listAll() {
 		return this.agentRepository.findAll();
@@ -29,7 +29,7 @@ public class AgentServiceImpl implements AgentService {
 
 	@Override
 	public Agent register(Agent agent) {
-		return this.agentRepository.save(agent);
+			return this.agentRepository.save(agent);
 	}
 
 	@Override

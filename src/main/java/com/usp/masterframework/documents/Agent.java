@@ -6,11 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Id;
 
 @Entity
 @Table(name = "agent")
-public class Agent extends Person{
+@JsonIgnoreProperties
+public class Agent extends Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +23,13 @@ public class Agent extends Person{
 	
 	@ManyToOne
 	@JoinColumn(name = "institution_id")
+	@JsonBackReference
 	private Institution institution;
 	
-	private Integer numbeDoido;
-
 	
 	public Agent() {
 		super();
-		
+		//institution.setId(id);
 	}
 	
 	public Institution getInstitution() {
@@ -67,13 +71,4 @@ public class Agent extends Person{
 		super.setEmail(email);
 	}
 
-	public Integer getNumbeDoido() {
-		return numbeDoido;
-	}
-
-	public void setNumbeDoido(Integer numbeDoido) {
-		this.numbeDoido = numbeDoido;
-	}
-
-	
 }

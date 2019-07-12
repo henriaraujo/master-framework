@@ -2,6 +2,7 @@ package com.usp.masterframework.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import com.usp.masterframework.documents.Agent;
 import com.usp.masterframework.documents.Institution;
@@ -18,5 +19,5 @@ public interface InstitutionService {
 	 
 	 void remove(Integer id);
 	 
-	 List<Agent> listAllInstitutionAgents(Integer id);
+	 Set<Agent> listAllInstitutionAgents(Integer id);
 }

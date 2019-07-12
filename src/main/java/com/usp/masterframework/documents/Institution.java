@@ -1,31 +1,38 @@
 package com.usp.masterframework.documents;
 
-import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Id;
 
 
 @javax.persistence.Entity
 @Table(name = "institution")
+@JsonIgnoreProperties
 public class Institution {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
-	private List<Agent> agents;
+
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
 	
+	
+	@OneToMany(mappedBy = "institution") 
+	@JsonManagedReference
+	private Set<Agent> agents;
 	
 	public Institution() {
 		
@@ -47,7 +54,7 @@ public class Institution {
 		this.name = name;
 	}
 
-	public List<Agent> getAgents() {
+	public Set<Agent> getAgents() {
 		return agents;
 	}
 
