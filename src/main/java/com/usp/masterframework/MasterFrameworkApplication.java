@@ -11,5 +11,4 @@ public class MasterFrameworkApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MasterFrameworkApplication.class, args);
 	}
-
 }
