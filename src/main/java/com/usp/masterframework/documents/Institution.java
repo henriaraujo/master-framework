@@ -20,11 +20,19 @@ public class Institution {
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
-
 	@OneToMany(mappedBy = "institution") 
 	@JsonManagedReference
 	@ElementCollection
 	private Set<Agent> agents;
+	
+
+	@OneToMany(mappedBy = "institution") 
+	@ElementCollection
+	@JsonManagedReference
+	private Set<Notification> notifications;
+	
+	
+	
 	
 	public Institution() {
 	}
@@ -54,6 +62,14 @@ public class Institution {
 
 	public Set<Agent> getAgents() {
 		return agents;
+	}
+
+	public Set<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(Set<Notification> notifications) {
+		this.notifications = notifications;
 	}
 
 }
