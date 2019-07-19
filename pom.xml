@@ -27,7 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -43,17 +42,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
 		<dependency>
-			<groupId>com.google.maps</groupId>
-			<artifactId>google-maps-services</artifactId>
-			<version>0.9.3</version>
-		</dependency>
-		
-		<dependency>
-  			<groupId>org.slf4j</groupId>
- 			 <artifactId>slf4j-simple</artifactId>
-  			<version>1.7.26</version>
+			<groupId>de.westnordost</groupId>
+			<artifactId>osmapi</artifactId>
+			<version>3.4</version>
 		</dependency>
 	</dependencies>
 
