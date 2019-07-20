@@ -10,29 +10,35 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
 @Entity
 public class Notification {
 	
 	public enum Type {
-		ADDRESS, SYSTEM 
+		ADDRESS, SYSTEM // Ad: sensor nao funciona, System: sensor X parou de funcionar
+
 	} 
 	
 	public enum Status {
 		AWAITING_DECITION, DENIED, ACCEPTED;
 	} 
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	private String name;
 	private int currentStatus;
 	
 	private String description;
+
 	
 	@ManyToOne
 	@JsonBackReference
 	@NotNull
 	@JoinColumn(name = "author_id")
+
 	private User author; 
 	
 	@ManyToOne
@@ -44,6 +50,7 @@ public class Notification {
 	public Notification() {
 		currentStatus = Status.AWAITING_DECITION.ordinal();
 		name = "Notification";
+
 	}
 	
 	public String getDescription() {
@@ -70,6 +77,7 @@ public class Notification {
 	public void setInstitution(Institution institution) {
 		this.institution = institution;
 	}
+
 
 	public int getCurrentStatus() {
 		return currentStatus;

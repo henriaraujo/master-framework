@@ -20,7 +20,7 @@ public class Institution {
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
-	
+
 	@OneToMany(mappedBy = "institution") 
 	@JsonManagedReference
 	@ElementCollection

@@ -6,5 +6,7 @@ public class AdressNotification extends Notification{
 	public AdressNotification() {
 		super();
 		super.setName("Adress Notification");
+
+
 	}
 }
