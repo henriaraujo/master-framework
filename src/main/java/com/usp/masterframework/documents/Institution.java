@@ -20,7 +20,10 @@ public class Institution {
 	
 	@NotEmpty(message = "Name can not be empty")
 	private String name;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	@OneToMany(mappedBy = "institution") 
 	@JsonManagedReference
 	@ElementCollection
@@ -33,6 +36,11 @@ public class Institution {
 	private Set<Notification> notifications;
 	
 	
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	public Institution() {
 	}
 	

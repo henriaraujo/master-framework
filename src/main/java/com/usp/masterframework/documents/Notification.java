@@ -1,5 +1,6 @@
 package com.usp.masterframework.documents;
 
+<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,26 +13,41 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
+=======
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 public class Notification {
 	
 	public enum Type {
 		ADDRESS, SYSTEM // Ad: sensor nao funciona, System: sensor X parou de funcionar
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	} 
 	
 	public enum Status {
 		AWAITING_DECITION, DENIED, ACCEPTED;
 	} 
 	
+<<<<<<< HEAD
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+=======
+	
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	private String name;
 	private int currentStatus;
 	
 	private String description;
+<<<<<<< HEAD
 
 	
 	@ManyToOne
@@ -39,6 +55,8 @@ public class Notification {
 	@NotNull
 	@JoinColumn(name = "author_id")
 
+=======
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	private User author; 
 	
 	@ManyToOne
@@ -49,8 +67,11 @@ public class Notification {
 	
 	public Notification() {
 		currentStatus = Status.AWAITING_DECITION.ordinal();
+<<<<<<< HEAD
 		name = "Notification";
 
+=======
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	}
 	
 	public String getDescription() {
@@ -79,10 +100,19 @@ public class Notification {
 	}
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	public int getCurrentStatus() {
 		return currentStatus;
 	}
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4f9dd696af924de6dbb8731d4625ab00d6b5506a
 	public void setCurrentStatus(int currentStatus) {
 		this.currentStatus = currentStatus;
 	}
