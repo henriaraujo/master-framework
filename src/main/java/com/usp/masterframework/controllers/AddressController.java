@@ -1,9 +1,7 @@
 package com.usp.masterframework.controllers;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,54 +15,53 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.usp.masterframework.documents.Agent;
+import com.usp.masterframework.documents.Address;
 import com.usp.masterframework.responses.Response;
-import com.usp.masterframework.services.AgentService;
+import com.usp.masterframework.services.AddressService;
 
 @RestController
-@RequestMapping(path = "/masterframework/agents")
-public class AgentController {
+@RequestMapping(path = "/masterframework/addresses")
+public class AddressController {
 
 	@Autowired
-	private AgentService agentService;
+	private AddressService addressService;
+  
 	
 	@GetMapping
-	public ResponseEntity<Response<List<Agent>>> listAll(){
-		return ResponseEntity.ok(new Response<List<Agent>>(this.agentService.listAll()));
+	public ResponseEntity<Response<List<Address>>> listAll(){
+		return ResponseEntity.ok(new Response<List<Address>>(this.addressService.listAll()));
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Optional<Agent>>> listById(@PathVariable (name = "id") Integer id){
-		return ResponseEntity.ok(new Response<Optional<Agent>>(this.agentService.listById(id)));
+	public ResponseEntity<Response<Optional<Address>>> listById(@PathVariable (name = "id") Integer id){
+		return ResponseEntity.ok(new Response<Optional<Address>>(this.addressService.listById(id)));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Response <Agent>> register (@Valid @RequestBody Agent agent, BindingResult result){
+	public ResponseEntity<Response <Address>> register (@Valid @RequestBody Address address, BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();
 			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Agent>(errors));
+			return ResponseEntity.badRequest().body(new Response<Address>(errors));
 		}
-		return ResponseEntity.ok(new Response<Agent>(this.agentService.register(agent)));
+		return ResponseEntity.ok(new Response<Address>(this.addressService.register(address)));
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Agent>> update (@PathVariable (name = "id") Integer id, @Valid @RequestBody Agent agent,
+	public ResponseEntity<Response<Address>> update (@PathVariable (name = "id") Integer id, @Valid @RequestBody Address address,
 			BindingResult result){
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();
 			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Agent>(errors));
+			return ResponseEntity.badRequest().body(new Response<Address>(errors));
 		}
-		agent.setId(id);
-		return ResponseEntity.ok(new Response<Agent>(this.agentService.update(agent)));
+		address.setId(id);
+		return ResponseEntity.ok(new Response<Address>(this.addressService.update(address)));
 	}
 	
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Response<Integer>> remove (@PathVariable(name = "id") Integer id){
-	  this.agentService.remove(id);
+	  this.addressService.remove(id);
 	  return ResponseEntity.ok(new Response<Integer>(1));
 	}
-	
 }
