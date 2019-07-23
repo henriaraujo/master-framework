@@ -1,5 +1,6 @@
 package com.usp.masterframework.services.impl;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,17 +42,18 @@ public class AdressServiceImpl implements AddressService{
 	public void remove(Integer id) {
 		this.addressRepository.deleteById(id);
 	}
-	
-	/*@Override
-	public String getLatitude(String addressName) {
-		// TODO Auto-generated method stub
+
+	@Override
+	public String getLatitude(String addressName)  throws IOException{
+		
 		return null;
 	}
 
 	@Override
-	public String getLongtitude(String addressName) {
-		// TODO Auto-generated method stub
+	public String getLongitude(String addressName)  throws IOException{
 		return null;
-	}*/
+	}
+	
+	
 
 }

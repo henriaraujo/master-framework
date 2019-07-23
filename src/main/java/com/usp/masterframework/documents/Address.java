@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "adress")
+@Table(name = "address")
 public class Address {
 	
 	 @Id
@@ -24,7 +24,7 @@ public class Address {
 	 }
 
 	private String lat;
-	 private String lon;
+	private String lon;
 	 
 	 
 	 public Address(String name) {

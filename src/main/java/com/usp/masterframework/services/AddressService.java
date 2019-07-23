@@ -1,5 +1,6 @@
 package com.usp.masterframework.services;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,14 +11,13 @@ public interface AddressService {
 	 
 	 Optional <Address> listById(Integer id);
 	 
-	 Address register (Address address);
+	 Address register (Address address) throws IOException;
 	 
 	 Address update(Address address);
 	 
 	 void remove(Integer Id);
 	
+	String getLatitude (String addressName)  throws IOException;
 	
-	
-	//String getLatitude (String addressName);
-	//String getLongtitude (String addressName);
+	String getLongitude (String addressName) throws IOException;
 }

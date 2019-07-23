@@ -1,4 +1,5 @@
 package com.usp.masterframework.controllers;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,7 @@ public class AddressController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Response <Address>> register (@Valid @RequestBody Address address, BindingResult result){
+	public ResponseEntity<Response <Address>> register (@Valid @RequestBody Address address, BindingResult result) throws IOException{
 		if(result.hasErrors()) {
 			List<String> errors = new ArrayList<String>();
 			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
