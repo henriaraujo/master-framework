@@ -23,8 +23,8 @@ public class Address {
 		 
 	 }
 
-	private String lat;
-	private String lon;
+	private String latitude;
+	private String longitude;
 	 
 	 
 	 public Address(String name) {
@@ -44,19 +44,19 @@ public class Address {
 	}
 	
 
-	public String getLat() {
-		return lat;
+	public String getLatitude() {
+		return latitude;
 	}
 
-	public void setLat(String lat) {
-		this.lat = lat;
+	public void setLat(String latitude) {
+		this.latitude = latitude;
 	}
 
-	public String getLon() {
-		return lon;
+	public String getLongitude() {
+		return longitude;
 	}
 
-	public void setLon(String lon) {
-		this.lon = lon;
+	public void setLon(String longitude) {
+		this.longitude = longitude;
 	}
 }

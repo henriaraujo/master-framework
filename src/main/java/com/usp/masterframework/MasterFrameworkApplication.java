@@ -2,63 +2,49 @@ package com.usp.masterframework;
 
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
+
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.GeocodingApiRequest;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.GeocodingResult;
 
 
 
 @SpringBootApplication
 public class MasterFrameworkApplication {
-	
-	public static String extractJsonValueResponse(String text, String term) 
-	{
-			return "Value doesn't exists!";
-	}
-	
-	public static void main(String[] args) throws IOException {
+	public static final String GoogleMapsKEY = "AIzaSyAl_OhUmGOTt-c1Zt1y9ne0M8MXlc5Sotg";
+	public static void main(String[] args) throws ApiException, InterruptedException, IOException{
 		//SpringApplication.run(MasterFrameworkApplication.class, args);
 		
-		//String testeString = "";
+		GeoApiContext context = new GeoApiContext.Builder()
+			    .apiKey(MasterFrameworkApplication.GoogleMapsKEY)
+			    .build();
 		
-		URL url = new URL("https://nominatim.openstreetmap.org/search?q=Rua%20Liborio%20Marino%2040&format=json");
-		HttpURLConnection conn = (HttpURLConnection)url.openConnection(); 
-		conn.setRequestMethod("GET");
-		conn.connect();
 		
-		int responsecode = conn.getResponseCode(); 
-		if(responsecode != 200) throw new RuntimeException("HttpResponseCode: " +responsecode); 
-		else { 
-			
-		}
-		
-		Scanner sc = new Scanner(url.openStream());
-		String inline = "";
-		while(sc.hasNext())
-		{
-		inline+=sc.nextLine();
-		}
-		System.out.println("\nJSON data in string format");
-		System.out.println(inline);
-		sc.close();
-		//String lat = "\""+playerName+"\""
-		
-		//"lat":"
-	//String lat, lon;
-	
-	//lat = inline.substring(0, 10);
-	
-	//System.out.println(lat);
-	//System.out.println(extractDataFromJsonString(inline, "\""+"lat"+"\""+":"+"\""));
-	
-	//String s1="that is index of example";  
-	//passing substring  
-	String latSearch = "\""+"lat"+"\""+":"+"\"";
-	int index = inline.indexOf(latSearch)  + latSearch.length();//returns the index of is substring
-	String latCatch = inline.substring(index);
-	System.out.println(latCatch);//2 8  
 
+	//GeocodingResult result = GeocodingApi.geocode(context, "R. Libório Marino, 40 - Jardim Nova Santa Paula, São Carlos - SP, 13564-340"
+	//		).latlng(latlng);
+			
+			
+	
+		
+			GeocodingResult[] results =  GeocodingApi.geocode(context,
+			    "R. Libório Marino, 40 - Jardim Nova Santa Paula, São Carlos - SP, 13564-340").await();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			
+		
+			System.out.println(gson.toJson(results[0].geometry.location));
+		
+
+			
+			//DistanceMatrix distance = new DistanceMatri
+			
 	}
 }

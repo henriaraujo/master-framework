@@ -26,6 +26,10 @@ public class Notification {
 		AWAITING_DECITION, DENIED, ACCEPTED;
 	} 
 
+	public enum Priority {
+		AWAITING_DECITION, DENIED, ACCEPTED;
+	} 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -41,7 +45,6 @@ public class Notification {
 	@JsonBackReference
 	@NotNull
 	@JoinColumn(name = "author_id")
-
 	private User author; 
 	
 	@ManyToOne
