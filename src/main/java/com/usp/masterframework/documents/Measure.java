@@ -37,4 +37,15 @@ public class Measure {
 	public void setNotification(Notification notification) {
 		this.notification = notification;
 	}
+	
+	public void CallAgents() 
+	{
+		
+	}
+	
+	public void VisitAddress() 
+	{
+		
+	}
+	
 }

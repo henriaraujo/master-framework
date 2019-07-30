@@ -16,18 +16,17 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
-public class Notification {
+public class Notification extends Report{
 	
-	public enum Type {
-		ADDRESS, SYSTEM // Ad: sensor does not work, System: X sensor has stopped working
-	} 
+	
+	
 	
 	public enum Status {
 		AWAITING_DECITION, DENIED, ACCEPTED;
 	} 
 
 	public enum Priority {
-		AWAITING_DECITION, DENIED, ACCEPTED;
+		LOW, MEDIUM, HIGH;
 	} 
 	
 	@Id
@@ -35,17 +34,17 @@ public class Notification {
 	private Integer id;
 
 	@NotNull
-	private String name;
+	//private String name;
 	private int currentStatus;
 	
-	private String description;
+	//private String description;
 
 	
 	@ManyToOne
 	@JsonBackReference
 	@NotNull
 	@JoinColumn(name = "author_id")
-	private User author; 
+	private User author;
 	
 	@ManyToOne
 	@JsonBackReference
@@ -58,17 +57,36 @@ public class Notification {
 	@ElementCollection
 	private Set<Measure> measures;
 	
-	public Notification() {
-		currentStatus = Status.AWAITING_DECITION.ordinal();
-		name = "Notification";
-	}
 	
-	public String getDescription() {
-		return description;
+
+	public Notification() {
+		super();
+		currentStatus = Status.AWAITING_DECITION.ordinal();
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	@Override
+	public void setAuthorId(Integer authorId) {
+		super.setAuthorId(authorId);
+	}
+	
+	@Override
+	public String getAddress() {
+		return super.getAddress();
+	}
+
+	@Override
+	public void setAddress(String address) {
+		super.setAddress(address);
+	}
+
+	@Override
+	public Integer getAuthorId() {
+		return super.getAuthorId();
+	}
+
+	@Override
+	public void setAuthor(Integer authorId) {
+		super.setAuthor(authorId);
 	}
 
 	public User getAuthor() {
@@ -96,11 +114,4 @@ public class Notification {
 		this.currentStatus = currentStatus;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }
