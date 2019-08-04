@@ -9,13 +9,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.maps.DirectionsApi.RouteRestriction;
+import com.google.maps.DirectionsApiRequest;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.GeocodingApiRequest;
 import com.google.maps.errors.ApiException;
+import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.Geometry;
+import com.google.maps.model.TransitRoutingPreference;
 import com.usp.masterframework.documents.Notification;
 import com.usp.masterframework.documents.Report;
 
@@ -39,8 +43,6 @@ public class MasterFrameworkApplication {
 		
 			GeocodingResult[] results =  GeocodingApi.geocode(context,
 			    "R. Libório Marino, 40 - Jardim Nova Santa Paula, São Carlos - SP, 13564-340").await();
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			
 			System.out.println(results[0]);
 		 
 			
@@ -50,8 +52,26 @@ public class MasterFrameworkApplication {
 			Notification notification = (Notification) report;
 			System.out.println(notification.getAddress());
 			
-            
-            System.out.println();
+			 DirectionsApiRequest directionsRequest = new DirectionsApiRequest(context);
+			 
+			 
+			 
+			 DirectionsResult directions = directionsRequest.origin("R. Libório Marino, 40 - Jardim Nova Santa Paula, São Carlos - SP, 13564-340")
+					 .destination("Av. Trab. São Carlense, 400 - Parque Arnold Schimidt, São Carlos - SP, 13566-590").
+					 transitRoutingPreference(TransitRoutingPreference.LESS_WALKING).await();
+			 
+		
+			 
+			 System.out.println(directions.routes[0]);
+			 
+			
+			 
+			 //directionsRequest.destination("Av. Trab. São Carlense, 400 - Parque Arnold Schimidt, São Carlos - SP, 13566-590");
+			
+			
+	
+			
+		
 
 			//DistanceMatrix distance = new DistanceMatri
 			
