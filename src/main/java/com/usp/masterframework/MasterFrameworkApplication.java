@@ -27,7 +27,7 @@ import com.usp.masterframework.documents.Report;
 
 @SpringBootApplication
 public class MasterFrameworkApplication {
-	public static final String GoogleMapsKEY = "AIzaSyAl_OhUmGOTt-c1Zt1y9ne0M8MXlc5Sotg";
+	public static final String GoogleMapsKEY = "";
 	public static void main(String[] args) throws ApiException, InterruptedException, IOException{
 		//SpringApplication.run(MasterFrameworkApplication.class, args);
 		
